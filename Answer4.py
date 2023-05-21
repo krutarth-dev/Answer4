@@ -1,21 +1,21 @@
 import requests
+# Utilizing the requests library to download the data
 import csv
 
 def download_data_and_convert_to_csv(link):
-    # Download the data from the link
+    # Downloading the data from the link
     response = requests.get(link)
     data = response.text
 
-    # Convert the data into a proper structure
-    # Modify the code below to process the data according to your specific requirements
+    # Converting the data into a proper structure
     structured_data = data.split('\n')
 
-    # Write the data to a CSV file
+    # Writing the data to the CSV file
     with open('output.csv', 'w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Data"])  # Write header if needed
-        writer.writerows(zip(structured_data))  # Write the data rows
+        writer.writerow(["Data"])  
+        writer.writerows(zip(structured_data))  
 
-# Test the program
+# Testing
 link = "https://data.nasa.gov/resource/y77d-th95.json"  # Replace with the actual link to download the data
 download_data_and_convert_to_csv(link)
